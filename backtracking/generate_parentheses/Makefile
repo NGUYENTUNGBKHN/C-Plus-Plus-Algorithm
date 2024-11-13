@@ -11,11 +11,17 @@ else
 TARGET_NAME=$(TARGET_NAME_ORG).exe
 endif
 
+ifeq ($(TOOLCHAIN_PC),)
+# TOOLCHAIN
+CC=gcc
+CPP=g++
+SIZE=size
+else
 # TOOLCHAIN
 CC=$(TOOLCHAIN_PC)/gcc
 CPP=$(TOOLCHAIN_PC)/g++
 SIZE=$(TOOLCHAIN_PC)/size
-
+endif 
 # CFLAG
 
 CCFLAG=\
