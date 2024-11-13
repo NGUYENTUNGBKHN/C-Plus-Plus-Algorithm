@@ -19,6 +19,7 @@
 *https://leetcode.com/explore/interview/card/top-interview-questions-medium/109/backtracking/794/
 */
 
+#include <cassert>
 #include <iostream>
 #include <vector>
 
@@ -70,12 +71,40 @@ void generate_parentheses::makeString(std::string str, int n, int closed, int op
 
 }
 
+static void test()
+{
+    int n = 0;
+    std::vector<std::string> pattern;
+    backTracking::generate_parentheses p;
+
+    /* Case test 1 */
+    n = 1;
+    pattern = {{"()"}};
+    assert(p.generate(n) == pattern);
+
+    /* Case test 2 */
+    n = 3;
+    pattern = {{"()()()"}, {"()(())"}, {"(())()"}, {"(()())"}, {"((()))"}};
+    assert(p.generate(n) == pattern);
+
+    /* Case test 3 */
+    n = 4;
+    pattern = {{"()()()()"}, {"()()(())"}, {"()(())()"}, {"()(()())"},
+                {"()((()))"}, {"(())()()"}, {"(())(())"}, {"(()())()"},
+                {"(()()())"}, {"(()(()))"}, {"((()))()"}, {"((())())"},
+                {"((()()))"}, {"(((())))"}};
+    assert(p.generate(n) == pattern);
+
+    std::cout << "All tests passed !!" << std::endl;
+}
 
 
 int main()
 {
 
-    std::cout << "Generate parentheses \n" << std::endl;
+    std::cout << "Generate parentheses problem \n" << std::endl;
+
+    test();
     
     return 0;
 }
